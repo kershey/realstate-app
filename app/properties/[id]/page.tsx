@@ -8,7 +8,7 @@ interface Props {
   };
 }
 
-export default function PropertyPage({ params }: Props) {
+export default async function PropertyPage({ params }: Props) {
   const property = properties.find((p) => p.id === params.id);
 
   if (!property) {
