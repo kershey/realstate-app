@@ -39,15 +39,13 @@ export default async function PropertyPage({ params }: PageProps) {
   return (
     <main className="min-h-screen">
       {/* Header Section */}
-      <section className="bg-black text-white py-12 sm:py-20">
+      <section className="bg-black text-white py-20">
         <div className="container mx-auto px-4">
-          <h1 className="text-4xl sm:text-6xl font-bold mb-4">
-            {property.title}
-          </h1>
-          <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 text-lg sm:text-xl">
+          <h1 className="text-6xl font-bold mb-4">{property.title}</h1>
+          <div className="flex items-center gap-6 text-xl">
             <p className="text-gray-400">{property.location}</p>
             <span
-              className={`px-4 py-2 rounded-full text-sm font-semibold w-fit ${
+              className={`px-4 py-2 rounded-full text-sm font-semibold ${
                 property.type === 'sale'
                   ? 'bg-blue-100 text-blue-800'
                   : 'bg-green-100 text-green-800'
@@ -55,7 +53,7 @@ export default async function PropertyPage({ params }: PageProps) {
             >
               {property.type === 'sale' ? 'For Sale' : 'For Rent'}
             </span>
-            <span className="text-xl sm:text-2xl font-bold">
+            <span className="text-2xl font-bold">
               ${property.price.toLocaleString()}
               {property.type === 'rent' ? '/month' : ''}
             </span>
@@ -64,14 +62,14 @@ export default async function PropertyPage({ params }: PageProps) {
       </section>
 
       {/* Content Section */}
-      <section className="py-12 sm:py-20">
+      <section className="py-20">
         <div className="container mx-auto px-4">
           {/* Image Gallery */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8 sm:mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
             {property.images.map((image: string, index: number) => (
               <div
                 key={index}
-                className="relative h-[300px] sm:h-[400px] rounded-lg overflow-hidden"
+                className="relative h-[400px] rounded-lg overflow-hidden"
               >
                 <Image
                   src={image}
@@ -87,21 +85,17 @@ export default async function PropertyPage({ params }: PageProps) {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Main Info */}
             <div className="md:col-span-2">
-              <h2 className="text-xl sm:text-2xl font-bold mb-4">
-                About this property
-              </h2>
-              <p className="text-gray-600 mb-6 sm:mb-8">
-                {property.description}
-              </p>
+              <h2 className="text-2xl font-bold mb-4">About this property</h2>
+              <p className="text-gray-600 mb-8">{property.description}</p>
 
               {/* Features */}
-              <div className="mb-6 sm:mb-8">
-                <h3 className="text-lg sm:text-xl font-bold mb-4">Features</h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="mb-8">
+                <h3 className="text-xl font-bold mb-4">Features</h3>
+                <div className="grid grid-cols-2 gap-4">
                   {property.features.map((feature: string, index: number) => (
                     <div key={index} className="flex items-center gap-2">
                       <svg
-                        className="w-5 h-5 text-green-500 flex-shrink-0"
+                        className="w-5 h-5 text-green-500"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -121,12 +115,12 @@ export default async function PropertyPage({ params }: PageProps) {
 
               {/* Amenities */}
               <div>
-                <h3 className="text-lg sm:text-xl font-bold mb-4">Amenities</h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <h3 className="text-xl font-bold mb-4">Amenities</h3>
+                <div className="grid grid-cols-2 gap-4">
                   {property.amenities.map((amenity: string, index: number) => (
                     <div key={index} className="flex items-center gap-2">
                       <svg
-                        className="w-5 h-5 text-blue-500 flex-shrink-0"
+                        className="w-5 h-5 text-blue-500"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -146,9 +140,9 @@ export default async function PropertyPage({ params }: PageProps) {
             </div>
 
             {/* Property Stats & Contact */}
-            <div className="space-y-6">
-              <div className="bg-gray-50 rounded-lg p-4 sm:p-6">
-                <h3 className="text-lg sm:text-xl font-bold mb-4 text-zinc-950">
+            <div>
+              <div className="bg-gray-50 rounded-lg p-6 mb-6">
+                <h3 className="text-xl font-bold mb-4 text-zinc-950">
                   Property Details
                 </h3>
                 <div className="space-y-4">
@@ -174,8 +168,8 @@ export default async function PropertyPage({ params }: PageProps) {
               </div>
 
               {/* Agent Contact */}
-              <div className="bg-white border rounded-lg p-4 sm:p-6">
-                <h3 className="text-lg sm:text-xl font-bold mb-4 text-zinc-950">
+              <div className="bg-white border rounded-lg p-6">
+                <h3 className="text-xl font-bold mb-4 text-zinc-950">
                   Contact Agent
                 </h3>
                 <div className="space-y-4">
