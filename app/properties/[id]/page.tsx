@@ -3,7 +3,7 @@ import { properties } from '@/app/lib/data';
 import { notFound } from 'next/navigation';
 
 interface PageProps {
-  params: { id: string };
+  params: Promise<{ id: string }>;
   searchParams: { [key: string]: string | string[] | undefined };
 }
 
@@ -28,7 +28,7 @@ interface Property {
 }
 
 export default async function PropertyPage({ params }: PageProps) {
-  const { id } = params;
+  const { id } = await params; // Await the params object
   const property = properties.find((p: Property) => p.id === id);
 
   if (!property) {
