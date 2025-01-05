@@ -2,11 +2,12 @@ import Image from 'next/image';
 import { properties } from '@/app/lib/data';
 import { notFound } from 'next/navigation';
 
-interface Props {
+type Props = {
   params: {
     id: string;
   };
-}
+  searchParams: { [key: string]: string | string[] | undefined };
+};
 
 export default async function PropertyPage({ params }: Props) {
   const property = properties.find((p) => p.id === params.id);
