@@ -2,15 +2,35 @@ import Image from 'next/image';
 import { properties } from '@/app/lib/data';
 import { notFound } from 'next/navigation';
 
-type Props = {
+interface PageProps {
   params: {
     id: string;
   };
   searchParams: { [key: string]: string | string[] | undefined };
-};
+}
 
-export default async function PropertyPage({ params }: Props) {
-  const property = properties.find((p) => p.id === params.id);
+interface Property {
+  id: string;
+  title: string;
+  location: string;
+  type: 'sale' | 'rent';
+  price: number;
+  description: string;
+  images: string[];
+  features: string[];
+  amenities: string[];
+  bedrooms: number;
+  bathrooms: number;
+  area: number;
+  agent: {
+    name: string;
+    email: string;
+    phone: string;
+  };
+}
+
+export default async function PropertyPage({ params }: PageProps) {
+  const property = properties.find((p: Property) => p.id === params.id);
 
   if (!property) {
     notFound();
@@ -46,7 +66,7 @@ export default async function PropertyPage({ params }: Props) {
         <div className="container mx-auto px-4">
           {/* Image Gallery */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-12">
-            {property.images.map((image, index) => (
+            {property.images.map((image: string, index: number) => (
               <div
                 key={index}
                 className="relative h-[400px] rounded-lg overflow-hidden"
@@ -72,7 +92,7 @@ export default async function PropertyPage({ params }: Props) {
               <div className="mb-8">
                 <h3 className="text-xl font-bold mb-4">Features</h3>
                 <div className="grid grid-cols-2 gap-4">
-                  {property.features.map((feature, index) => (
+                  {property.features.map((feature: string, index: number) => (
                     <div key={index} className="flex items-center gap-2">
                       <svg
                         className="w-5 h-5 text-green-500"
@@ -97,7 +117,7 @@ export default async function PropertyPage({ params }: Props) {
               <div>
                 <h3 className="text-xl font-bold mb-4">Amenities</h3>
                 <div className="grid grid-cols-2 gap-4">
-                  {property.amenities.map((amenity, index) => (
+                  {property.amenities.map((amenity: string, index: number) => (
                     <div key={index} className="flex items-center gap-2">
                       <svg
                         className="w-5 h-5 text-blue-500"
