@@ -6,10 +6,9 @@ interface Props {
   params: {
     id: string;
   };
-  searchParams: { [key: string]: string | string[] | undefined };
 }
 
-export default async function PropertyPage({ params, searchParams }: Props) {
+export default async function PropertyPage({ params }: Props) {
   const property = properties.find((p) => p.id === params.id);
 
   if (!property) {
@@ -133,15 +132,13 @@ export default async function PropertyPage({ params, searchParams }: Props) {
                     </span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-600 text-zinc-950">
-                      Bathrooms
-                    </span>
+                    <span className="text-gray-600">Bathrooms</span>
                     <span className="font-semibold text-zinc-950">
                       {property.bathrooms}
                     </span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-600 text-zinc-950">Area</span>
+                    <span className="text-gray-600">Area</span>
                     <span className="font-semibold text-zinc-950">
                       {property.area} sq ft
                     </span>
