@@ -6,9 +6,10 @@ interface Props {
   params: {
     id: string;
   };
+  searchParams: { [key: string]: string | string[] | undefined };
 }
 
-export default async function PropertyPage({ params }: Props) {
+export default async function PropertyPage({ params, searchParams }: Props) {
   const property = properties.find((p) => p.id === params.id);
 
   if (!property) {
