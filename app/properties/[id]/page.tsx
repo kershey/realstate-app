@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 
 interface PageProps {
   params: Promise<{ id: string }>;
-  searchParams: { [key: string]: string | string[] | undefined };
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
 interface Property {
@@ -28,7 +28,8 @@ interface Property {
 }
 
 export default async function PropertyPage({ params }: PageProps) {
-  const { id } = await params; // Await the params object
+  const { id } = await params; // Await params
+
   const property = properties.find((p: Property) => p.id === id);
 
   if (!property) {
